@@ -20,21 +20,60 @@
             </tbody>
         </table>
     </div>
+
 </template>
 
 <script>
+
+import { useProductStore } from '@/stores/Product'
+import { useCustomerStore } from '@/stores/Customer'
+import { mapActions } from 'pinia'
+
 export default {
     props: {
-        headers: Array, // Array de cabeçalhos da tabela
-        items: Array, // Array de itens para exibir na tabela
-        actions: Array // Array de ações disponíveis para cada item
+        headers: Array,
+        items: Array,
+        actions: Array,
+        edit: String,
+        isEditing: Boolean
     },
+
     methods: {
+        ...mapActions(useProductStore, ['getProductById']),
+        ...mapActions(useCustomerStore, ['getCustomerById']),
+        ...mapActions(useProductStore, ['deleteProduct']),
+        ...mapActions(useCustomerStore, ['deleteCustomer']),
         handleAction(action, item) {
-            // Lógica para lidar com a ação clicada
-            // Você pode emitir um evento ou chamar um método no componente pai
-            console.log(`Ação "${action.label}" clicada para o item`, item);
+
+            if (typeof action.action === 'function') {
+
+                if (action.label === 'Editar' && action.type === 'product') {
+                    action.action(item)
+                    this.getProductById(item.id)
+                }
+
+                if (action.label === 'Editar' && action.type === 'customer') {
+                    action.action(item)
+                    this.getCustomerById(item.id)
+                }
+
+                if (action.label === 'Excluir' && action.type === 'product') {
+                    this.deleteProduct(item.id)
+                    window.location.reload()
+                }
+
+                if (action.label === 'Excluir' && action.type === 'customer') {
+                    this.deleteCustomer(item.id)
+                    window.location.reload()
+                }
+
+            } else {
+                console.error('Ação inválida:', action)
+            }
+        },
+        closeModal() {
+            alert('aa')
         }
-    }
-};
+    },
+}
 </script>

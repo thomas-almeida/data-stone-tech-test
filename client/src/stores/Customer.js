@@ -1,10 +1,11 @@
 // store.js
 import { defineStore } from 'pinia'
-import { createCustomer, getCustomerList } from '../services'
+import { createCustomer, getCustomerList, getCustomerById, updateCustomer, deleteCustomer } from '../services'
 
 export const useCustomerStore = defineStore('customers', {
     state: () => ({
-        customerList: []
+        customerList: [],
+        currentCustomer: null
     }),
 
     actions: {
@@ -23,11 +24,35 @@ export const useCustomerStore = defineStore('customers', {
             } catch (error) {
                 console.error(error)
             }
+        },
+        async getCustomerById(customerId) {
+            try {
+                this.currentCustomer = await getCustomerById(customerId)
+            } catch (error) {
+                console.error(error)
+            }
+        },
+        async updateCustomer(customerId, customerData) {
+            try {
+                this.currentCustomer = await updateCustomer(customerId, customerData)
+            } catch (error) {
+                console.error(error)
+            }
+        },
+        async deleteCustomer(customerId) {
+            try {
+                await deleteCustomer(customerId)
+            } catch (error) {
+                console.error(error)
+            }
         }
     },
     getters: {
         getCustomerList() {
             return this.customerList
+        },
+        getCurrentCustomer() {
+            return this.currentCustomer
         }
     }
 })

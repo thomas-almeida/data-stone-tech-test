@@ -38,12 +38,7 @@
       </span>
     </form>
 
-    <button 
-      class="btn-submit"
-      @click="submitForm"
-      :class="{ 'btn-disabled': !isValid() }"
-      :disabled="!isValid()"
-    >
+    <button class="btn-submit" @click="submitForm" :class="{ 'btn-disabled': !isValid() }" :disabled="!isValid()">
       Cadastrar Cliente
     </button>
 
@@ -51,6 +46,9 @@
 </template>
 
 <script>
+
+import { useCustomerStore } from '@/stores/Customer';
+import { mapActions } from 'pinia';
 
 export default {
   data() {
@@ -67,15 +65,18 @@ export default {
     };
   },
   methods: {
+    ...mapActions(useCustomerStore, ['addCustomer']),
     submitForm() {
       event.preventDefault()
-      console.log('Dados do formulário:', this.formData);
+      const customer = { ...this.formData }
+      this.addCustomer(customer)
       this.resetForm();
     },
     resetForm() {
       this.formData = {
         nome: '',
         cpf: '',
+        rg: '',
         telefone: '',
         email: '',
         status: ''

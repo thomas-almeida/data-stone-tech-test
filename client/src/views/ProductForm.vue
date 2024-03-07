@@ -44,6 +44,9 @@
 
 <script>
 
+import { useProductStore } from '@/stores/Product'
+import { mapActions } from 'pinia'
+
 export default {
   data() {
     return {
@@ -54,13 +57,15 @@ export default {
         status: ''
       },
       statusOptions: ['Ativo', 'Inativo']
-    };
+    }
   },
   methods: {
+    ...mapActions(useProductStore, ['addProduct']),
     submitForm() {
       event.preventDefault()
-      console.log('Dados do formulário:', this.formData);
-      this.resetForm();
+      const product = { ...this.formData }
+      this.addProduct(product)
+      this.resetForm()
     },
     resetForm() {
       this.formData = {
@@ -68,16 +73,16 @@ export default {
         valor: '',
         desconto: '',
         status: ''
-      };
+      }
     },
     isValid() {
       for (let key in this.formData) {
         if (!this.formData[key]) {
-          return false;
+          return false
         }
       }
-      return true;
+      return true
     }
   }
-};
+}
 </script>

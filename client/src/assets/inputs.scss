@@ -1,0 +1,36 @@
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+}
+
+input {
+    width: 98%;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.select-field label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+select {
+    cursor: pointer;
+    width: 105%;
+    padding: 0.3rem;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+form {
+    padding: 20px 0px;
+    display: grid;
+    grid-template-columns: repeat(2, 2fr)
+}
+
+form span {
+    margin: 0px 15px;
+}

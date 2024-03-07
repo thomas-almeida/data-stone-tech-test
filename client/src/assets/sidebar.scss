@@ -1,0 +1,35 @@
+.sidebar-container {
+    height: 100vh;
+    width: 300px;
+    border-right: 1px solid #ddd;
+}
+
+.sidebar-container>div {
+    padding: 20px 10px;
+}
+
+.sidebar-container ul {
+    list-style: none;
+}
+
+.sidebar-container li {
+    margin: 20px;
+    display: flex;
+    gap: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.sidebar-container li:hover {
+    color: rgb(1, 103, 205);
+    font-weight: bold;
+}
+
+.sidebar-container h3 {
+    padding: 20px;
+}
+
+.sidebar-container b {
+    color: dodgerblue;
+}

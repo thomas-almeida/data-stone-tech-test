@@ -1,16 +1,28 @@
 // store.js
 import { defineStore } from 'pinia'
+import { createCustomer, getCustomerList } from '../services'
 
 export const useCustomerStore = defineStore('customers', {
     state: () => ({
         customerList: []
     }),
-    addCustomer(customer) {
-        this.customerList.push(customer)
-    },
+
     actions: {
-        addCustomer(customer) {
-            this.customerList.push(customer)
+        async addCustomer(customer) {
+            try {
+                const newCustomer = await createCustomer(customer)
+                this.customerList.push(newCustomer)
+            } catch (error) {
+                console.error(error)
+                throw error
+            }
+        },
+        async getAllCustomers() {
+            try {
+                this.customerList = await getCustomerList()
+            } catch (error) {
+                console.error(error)
+            }
         }
     },
     getters: {

@@ -14,11 +14,11 @@
       </span>
       <span>
         <label for="">Valor Mensal</label>
-        <input type="tel" v-model="formData.valor" placeholder="R$ 0.000,00">
+        <input type="tel" v-model="formData.valor" placeholder="R$ 0.000,00" v-maska data-maska="0.99" data-maska-tokens="0:\d:multiple|9:\d:optional">
       </span>
       <span>
         <label for="">Desconto</label>
-        <input type="tel" v-model="formData.desconto" placeholder="%">
+        <input type="tel" v-model="formData.desconto" placeholder="%" v-maska data-maska="!%###" data-maska-tokens="H:[0-9a-fA-F]">
       </span>
       <span class="select-field">
         <label for="">Status do Produto</label>
@@ -41,8 +41,10 @@
 
 import { useProductStore } from '@/stores/Product'
 import { mapActions } from 'pinia'
+import { vMaska } from 'maska'
 
 export default {
+  directives: { maska: vMaska },
   data() {
     return {
       formData: {

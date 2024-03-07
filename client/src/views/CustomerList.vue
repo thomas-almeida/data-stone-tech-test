@@ -1,6 +1,6 @@
 <template>
     <main>
-        <h1>Meus Produtos</h1>
+        <h1>Meus Clientes</h1>
         <p>
             Cadastre novos clientes aqui,
             você será capaz de associar produtos a ele depois.
@@ -8,12 +8,12 @@
 
         <div>
             <ListTable :headers="[
+                'Status',
                 'Nome',
                 'CPF',
                 'RG',
                 'Telefone',
                 'Email',
-                'Status'
             ]" :items="getAllCustomersComputed" :actions="acoesCliente" />
         </div>
     </main>

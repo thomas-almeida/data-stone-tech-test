@@ -1,16 +1,16 @@
 <template>
     <main>
-        <h1>Meus Clientes</h1>
+        <h1>Meus Produtos</h1>
         <p>
-            Cadastre novos clientes aqui,
-            você será capaz de associar produtos a ele depois.
+            Cadastre novos produtos aqui,
+            você será capaz de associar clientes a ele depois.
         </p>
         <div>
             <ListTable :headers="[
+                'Status',
                 'Nome',
                 'Valor',
-                'Desconto',
-                'Status'
+                'Desconto'
             ]" :items="getAllProductsComputed" :actions="acoesCliente" />
         </div>
     </main>

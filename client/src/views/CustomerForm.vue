@@ -14,15 +14,15 @@
       </span>
       <span>
         <label for="">CPF</label>
-        <input type="tel" v-model="formData.cpf" placeholder="123.456.789-10">
+        <input type="tel" v-model="formData.cpf" placeholder="123.456.789-10" v-maska data-maska="###.###.###-##">
       </span>
       <span>
         <label for="">RG</label>
-        <input type="tel" v-model="formData.rg" placeholder="12.345.678-X">
+        <input type="tel" v-model="formData.rg" placeholder="12.345.678-X" v-maska data-maska="**.***.***-*">
       </span>
       <span>
         <label for="">Telefone</label>
-        <input type="text" v-model="formData.telefone" placeholder="(11) 98765-4321">
+        <input type="text" v-model="formData.telefone" placeholder="(11) 98765-4321" v-maska data-maska="(##) #####-####">
       </span>
       <span>
         <label for="">Email</label>
@@ -49,8 +49,10 @@
 
 import { useCustomerStore } from '@/stores/Customer'
 import { mapActions } from 'pinia'
+import { vMaska } from 'maska'
 
 export default {
+  directives: { maska: vMaska },
   data() {
     return {
       formData: {

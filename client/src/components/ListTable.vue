@@ -12,9 +12,9 @@
                     <td v-for="header in headers" :key="header">{{ item[header.toLowerCase()] }}</td>
                     <td class="all-flex gap-5">
                         <!-- Renderização dinâmica dos botões de ação -->
-                        <button v-for="action in actions" :key="action.label" @click="handleAction(action, item)">
+                        <span v-for="action in actions" :key="action.label" @click="handleAction(action, item)">
                             {{ action.label }}
-                        </button>
+                        </span>
                     </td>
                 </tr>
             </tbody>

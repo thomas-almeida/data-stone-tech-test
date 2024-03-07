@@ -1,0 +1,96 @@
+@media screen and (max-width: 800px) {
+
+    .responsive {
+        display: flex !important;
+    }
+
+    .sidebar-container {
+        display: none;
+    }
+
+    .all-flex {
+        flex-wrap: wrap;
+    }
+
+    form {
+        display: grid;
+        grid-template-columns: repeat(1, 2fr);
+    }
+
+    main {
+        padding: 0px 20px;
+        height: 80vh;
+        overflow-y: scroll;
+    }
+
+    button {
+        width: 94%;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        display: grid;
+        justify-content: left;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        width: 300px;
+        margin: 10px 0px;
+    }
+
+    .modal-container {
+        padding: 20px;
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 1px 2px 4px rgba(34, 36, 40, 0.231372549);
+        width: 315px;
+        height: 60vh;
+        overflow-y: scroll;
+    }
+
+    #close-modal {
+        position: absolute;
+        top: 59px;
+        color: #fff;
+        font-size: 48px;
+        right: 10px;
+    }
+
+    .bottom-options {
+        position: fixed;
+        bottom: 0px;
+        background-color: #fff;
+        border-top: 1px solid #ddd;
+        height: 9vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: -webkit-fill-available;
+    }
+
+    .bottom-options li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    ion-icon.md.hydrated {
+        width: 40px;
+        color: #000;
+        font-size: 35px;
+    }
+
+    ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .dash-box {
+        padding: 0 !important;
+    }
+}

@@ -4,6 +4,9 @@
       <div class="sidebar-container">
         <SideBar :options="optionsWithLinks" />
       </div>
+      <div class="responsive bottom-options">
+        <BottomBar :options="optionsWithLinks"/>
+      </div>
       <div class="screens-container">
         <RouterView />
       </div>
@@ -14,6 +17,7 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import SideBar from './components/SideBar.vue'
+import BottomBar from './components/BottomBar.vue';
 
 const options = [
   { name: 'home-outline', option: 'Dashboard', link: '/' },

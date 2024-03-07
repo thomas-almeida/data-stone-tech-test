@@ -18,7 +18,7 @@
         </div>
     </main>
     <div v-if="isEditing" class="modal-background all-flex">
-        <Icon name="close-outline" @click="closeModal" />
+        <Icon name="close-outline" id="close-modal" @click="closeModal" />
         <EditModal :who="whoIsEditingComputed" :isEditing="isEditing" />
     </div>
 </template>

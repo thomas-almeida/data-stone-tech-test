@@ -3,6 +3,7 @@
 @import url(button.scss);
 @import url(table.scss);
 @import url(modal.scss);
+@import url(responsive.scss);
 
 * {
     margin: 0;
@@ -68,4 +69,8 @@ main {
     font-size: 50px;
     margin-top: 20px;
     color: dodgerblue;
+}
+
+.responsive {
+    display: none;
 }

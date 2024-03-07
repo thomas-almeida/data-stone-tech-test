@@ -1,4 +1,8 @@
-# ConceptCanvas
+# Teste DataStone
+## Notas impotantes:
+Voce verá que neste repositório há 2 contribuidores, não se preocupe!, sou eu mesmo nos dois perfis, acontece que ainda não migrei meu computador de casa para minha conta principal e notei isso no meio do desenvolvimento, se ainda tiver alguma dúvida posso numa call mostrar passo a passo sobre o desenvolvimento do teste, que inclusive foi muito bacana de fazer há 10 horas do prazo final.
+
+# DataStone.hub
 
 ![Imagem do ConceptCanvas](https://uploaddeimagens.com.br/images/004/744/610/full/concept-canvas-shot.png?1708534455)
 

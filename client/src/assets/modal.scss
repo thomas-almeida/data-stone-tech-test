@@ -1,0 +1,15 @@
+.modal-background {
+    position: fixed;
+    width: -webkit-fill-available;
+    height: 100vh;
+    background: #0000006b;
+    top: 0;
+    left: 0;
+}
+
+.modal-container {
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 1px 2px 4px #2224283b;
+}

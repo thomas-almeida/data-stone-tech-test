@@ -7,24 +7,22 @@
         </p>
 
         <div>
-            <ListTable 
-                :headers="
-                [
-                    'Nome',
-                    'CPF',
-                    'Telefone',
-                    'Email',
-                    'Status'
-                ]" 
-                :items="clientes"
-                :actions="acoesCliente" 
-            />
+            <ListTable :headers="[
+                'Nome',
+                'CPF',
+                'RG',
+                'Telefone',
+                'Email',
+                'Status'
+            ]" :items="getAllCustomersComputed" :actions="acoesCliente" />
         </div>
     </main>
 </template>
 
 <script>
 import ListTable from '@/components/ListTable.vue';
+import { useCustomerStore } from '@/stores/Customer';
+import { mapGetters, mapActions } from 'pinia';
 
 export default {
     components: {
@@ -32,39 +30,26 @@ export default {
     },
     data() {
         return {
-            clientes: [
-                { 
-                    id: 1,
-                    nome: 'João',
-                    cpf: '123.456.789-10',
-                    telefone: '(11) 98765-4321',
-                    email: 'email@email.com',
-                    status: 'Ativo'
-                 },
-                 { 
-                    id: 2,
-                    nome: 'João',
-                    cpf: '123.456.789-10',
-                    telefone: '(11) 98765-4321',
-                    email: 'email@email.com',
-                    status: 'Ativo'
-                 },                { 
-                    id: 3,
-                    nome: 'João',
-                    cpf: '123.456.789-10',
-                    telefone: '(11) 98765-4321',
-                    email: 'email@email.com',
-                    status: 'Ativo'
-                 },
-                // Adicione mais itens conforme necessário
-            ],
+            clientes: [],
             acoesCliente: [
                 { label: 'Editar', action: 'editar' },
                 { label: 'Excluir', action: 'excluir' },
                 { label: 'Associar', action: 'associar' },
-                // Adicione mais ações conforme necessário
             ]
         };
+    },
+    mounted() {
+        this.getAllCustomers()
+    },
+    computed: {
+        ...mapGetters(useCustomerStore, ['getCustomerList']),
+        getAllCustomersComputed() {
+            this.clientes = this.getCustomerList
+            return this.clientes
+        }
+    },
+    methods: {
+        ...mapActions(useCustomerStore, ['getAllCustomers'])
     }
 };
 </script>

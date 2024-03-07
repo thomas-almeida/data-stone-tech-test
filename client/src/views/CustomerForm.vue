@@ -47,30 +47,37 @@
 
 <script>
 
-import { useCustomerStore } from '@/stores/Customer';
-import { mapActions } from 'pinia';
+import { useCustomerStore } from '@/stores/Customer'
+import { mapActions } from 'pinia'
 
 export default {
   data() {
     return {
       formData: {
+        id: '1',
         nome: '',
         cpf: '',
         rg: '',
         telefone: '',
         email: '',
-        status: ''
+        status: '',
+        produtos: []
       },
       statusOptions: ['Ativo', 'Inativo']
-    };
+    }
   },
   methods: {
     ...mapActions(useCustomerStore, ['addCustomer']),
+    generateUniqueId() {
+      const timestamp = Date.now().toString(36)
+      const randomString = Math.random().toString(36).substring(2, 8)
+      return timestamp + '-' + randomString
+    },
     submitForm() {
       event.preventDefault()
-      const customer = { ...this.formData }
-      this.addCustomer(customer)
-      this.resetForm();
+      this.formData.id = this.generateUniqueId()
+      this.addCustomer(this.formData)
+      this.resetForm()
     },
     resetForm() {
       this.formData = {
@@ -79,17 +86,17 @@ export default {
         rg: '',
         telefone: '',
         email: '',
-        status: ''
-      };
+        status: '',
+      }
     },
     isValid() {
       for (let key in this.formData) {
         if (!this.formData[key]) {
-          return false;
+          return false
         }
       }
-      return true;
+      return true
     }
   }
-};
+}
 </script>

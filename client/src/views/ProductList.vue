@@ -6,23 +6,20 @@
             você será capaz de associar produtos a ele depois.
         </p>
         <div>
-            <ListTable 
-                :headers="
-                [
-                    'Nome',
-                    'Valor',
-                    'Desconto', 
-                    'Status'
-                ]" 
-                :items="produtos"
-                :actions="acoesCliente" 
-            />
+            <ListTable :headers="[
+                'Nome',
+                'Valor',
+                'Desconto',
+                'Status'
+            ]" :items="getAllProductsComputed" :actions="acoesCliente" />
         </div>
     </main>
 </template>
 
 <script>
-import ListTable from '@/components/ListTable.vue';
+import ListTable from '@/components/ListTable.vue'
+import { useProductStore } from '@/stores/Product'
+import { mapGetters, mapActions } from 'pinia'
 
 export default {
     components: {
@@ -30,36 +27,25 @@ export default {
     },
     data() {
         return {
-            produtos: [
-                {
-                    id: 1,
-                    nome: 'PACOTE LEADS I',
-                    valor: 'R$ 2000',
-                    desconto: '10%',
-                    status: 'Ativo'
-                },
-                {
-                    id: 2,
-                    nome: 'PACOTE LEADS II',
-                    valor: 'R$ 2000',
-                    desconto: '10%',
-                    status: 'Ativo'
-                },
-                {
-                    id: 3,
-                    nome: 'PACOTE LEADS III',
-                    valor: 'R$ 2000',
-                    desconto: '10%',
-                    status: 'Ativo'
-                },
-                // Adicione mais itens conforme necessário
-            ],
+            produtos: [],
             acoesCliente: [
                 { label: 'Editar', action: 'editar' },
                 { label: 'Excluir', action: 'excluir' },
-                // Adicione mais ações conforme necessário
             ]
-        };
+        }
+    },
+    mounted() {
+        this.getAllProducts()
+    },
+    computed: {
+        ...mapGetters(useProductStore, ['getProductList']),
+        getAllProductsComputed() {
+            this.produtos = this.getProductList
+            return this.produtos
+        }
+    },
+    methods: {
+        ...mapActions(useProductStore, ['getAllProducts'])
     }
-};
+}
 </script>

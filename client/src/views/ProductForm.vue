@@ -30,12 +30,7 @@
       </span>
     </form>
 
-    <button 
-      class="btn-submit"
-      @click="submitForm"
-      :class="{ 'btn-disabled': !isValid() }"
-      :disabled="!isValid()"
-    >
+    <button class="btn-submit" @click="submitForm" :class="{ 'btn-disabled': !isValid() }" :disabled="!isValid()">
       Cadastrar Produto
     </button>
 
@@ -51,6 +46,7 @@ export default {
   data() {
     return {
       formData: {
+        id: '1',
         nome: '',
         valor: '',
         desconto: '',
@@ -61,10 +57,15 @@ export default {
   },
   methods: {
     ...mapActions(useProductStore, ['addProduct']),
+    generateUniqueId() {
+      const timestamp = Date.now().toString(36)
+      const randomString = Math.random().toString(36).substring(2, 8)
+      return timestamp + '-' + randomString
+    },
     submitForm() {
       event.preventDefault()
-      const product = { ...this.formData }
-      this.addProduct(product)
+      this.formData.id = this.generateUniqueId()
+      this.addProduct(this.formData)
       this.resetForm()
     },
     resetForm() {

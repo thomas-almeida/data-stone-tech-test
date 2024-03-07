@@ -22,19 +22,27 @@
 <script>
 import { useCustomerStore } from '@/stores/Customer';
 import { useProductStore } from '@/stores/Product';
-import { mapGetters } from 'pinia';
+import { mapGetters, mapActions } from 'pinia';
 
 export default {
+  mounted() {
+    this.getAllCustomers()
+    this.getAllProducts()
+  },
   computed: {
     ...mapGetters(useCustomerStore, ['getCustomerList']),
     ...mapGetters(useProductStore, ['getProductList']),
-    
+
     getTotalCustomersComputed() {
       return this.getCustomerList.length
     },
     getTotalProductsComputed() {
       return this.getProductList.length
     }
+  },
+  methods: {
+    ...mapActions(useCustomerStore, ['getAllCustomers']),
+    ...mapActions(useProductStore, ['getAllProducts'])
   }
 }
 

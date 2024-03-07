@@ -1,32 +1,31 @@
 <template>
-  <v-card>
-    <v-layout>
-      <v-navigation-drawer
-        expand-on-hover
-        rail
-      >
-        <v-list>
-          <v-list-item
-            prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg"
-            subtitle="sandra_a88@gmailcom"
-            title="Sandra Adams"
-          ></v-list-item>
-        </v-list>
-
-        <v-divider></v-divider>
-
-        <v-list density="compact" nav>
-
-          <v-list-item prepend-icon="mdi-account" title="Cadastrar novo Cliente" value="create-customer"></v-list-item>
-          <v-list-item prepend-icon="mdi-account" title="Cadastrar novo Produto" value="create-product"></v-list-item>
-          <v-list-item prepend-icon="mdi-account" title="Meus Clientes" value="list-customers"></v-list-item>
-          <v-list-item prepend-icon="mdi-account" title="Meus Produtos" value="list-products"></v-list-item>
-
-        </v-list>
-      </v-navigation-drawer>
-
-      <v-main style="height: 100vh">
-      </v-main>
-    </v-layout>
-  </v-card>
+  <div class="container">
+    <div class="container-content">
+      <div class="sidebar-container">
+        <SideBar :options="optionsWithLinks" />
+      </div>
+      <div class="screens-container">
+        <RouterView />
+      </div>
+    </div>
+  </div>
 </template>
+
+<script setup>
+import { RouterView } from 'vue-router';
+import SideBar from './components/SideBar.vue';
+
+const options = [
+  { name: 'home-outline', option: 'Dashboard', link: '/' },
+  { name: 'person-add-outline', option: 'Cadastrar novo Cliente', link: '/cadastro-cliente' },
+  { name: 'cube-outline', option: 'Cadastrar novo Produto', link: '/cadastro-produto' },
+  { name: 'person-outline', option: 'Meus Clientes', link: '/meus-clientes' },
+  { name: 'cube-outline', option: 'Meus Produtos', link: '/meus-produtos' }
+];
+
+const optionsWithLinks = options.map(option => ({
+  name: option.name,
+  option: option.option,
+  link: option.link
+}));
+</script>

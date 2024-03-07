@@ -23,7 +23,7 @@ Você pode testar o Data Stone.hub em seu ambiente de desenvolvimento de forma s
 
 ### Backend
 
-É importante ressaltar que a forma de armazenamento dos dados aqui é mocada, portanto o backend grava os dados em arquivos Json dentro do projeto, neles estão os objetos de cliente e produto, já existem alguns que é possível ver quando abrimos o projeto pela primeira vez.
+É importante ressaltar que a forma de armazenamento dos dados aqui é mocada, portanto o backend grava os dados em arquivos Json dentro do projeto, neles estão os objetos de cliente e produto, já existem alguns que é possível ver quando abrimos o projeto pela primeira vez. Algo que nao pude fazer é encher de dados para ver muitos registros, espero que voce possa fazer isso por mim!
 
 ```json
 [
@@ -65,7 +65,7 @@ $ npm run dev
 
 ----
 
-### Funcionamento do App
+## Funcionamento do App
 Como é um app simples, mas feito em poucas horas, o Data Stone.hub tem funcionalidades exutas de um mvp, sendo elas:
 - Criar cadastros de novos clientes;
 - Criar cadastros de novos produtos;
@@ -73,3 +73,6 @@ Como é um app simples, mas feito em poucas horas, o Data Stone.hub tem funciona
 - Excluir os cadastros;
 - Associar á um cliente um produto cadastrado;
 - Visualizar na home o número de clientes e produtos existentes no sistema.
+
+## Considerações
+A única coisa que fico faltando foram os testes unitários com Jest, queria ter feito mas meu tempo foi extremamente curto, espero que nesse tempo de avaliação meu código tenha agradado e meu sistema tenha entregado um MVP que o time comercial da DataStone usuaria sem problemas, desde já muito obrigado pela oportunidade!

@@ -4,7 +4,7 @@ Voce verá que neste repositório há 2 contribuidores, não se preocupe!, sou e
 
 # DataStone.hub
 
-![Imagem do ConceptCanvas](https://uploaddeimagens.com.br/images/004/744/610/full/concept-canvas-shot.png?1708534455)
+![Imagem do ConceptCanvas](https://uploaddeimagens.com.br/images/004/753/525/full/237shots_so.png?1709854144)
 
 Esta é uma breve documentação do projeto Data Stone.hub, feito para auxiliar um time comercial a cadastrar e gerenciar clientes e produtos
 

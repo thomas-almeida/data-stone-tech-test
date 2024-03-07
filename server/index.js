@@ -1,0 +1,66 @@
+const express = require('express')
+const fs = require('fs')
+const cors = require('cors')
+
+const api = express()
+const PORT = 3001
+
+api.use(express.json())
+api.use(cors())
+
+api.post('/create-customer', (req, res) => {
+    const newCustomer = req.body
+    const customers = JSON.parse(fs.readFileSync('customers.json'))
+    customers.push(newCustomer)
+    fs.writeFileSync('customers.json', JSON.stringify(customers))
+    res.json(req.body)
+})
+
+api.post('/create-product', (req, res) => {
+    const newProduct = req.body
+    const products = JSON.parse(fs.readFileSync('products.json'))
+    products.push(newProduct)
+    fs.writeFileSync('products.json', JSON.stringify(products))
+    res.json(req.body)
+})
+
+api.delete('/delete-customer/:id', (req, res) => {
+    const id = req.params.id
+    let customers = JSON.parse(fs.readFileSync('customers.json'))
+    const index = customers.findIndex(customer => customer.id === id)
+    if (index !== -1) {
+        customer.splice(index, 1)
+        fs.writeFileSync('customers.json', JSON.stringify(customers))
+        res.json({ message: 'Cliente excluído com sucesso!' })
+    } else {
+        res.status(404).json({ error: 'Cliente não encontrado.' })
+    }
+})
+
+api.delete('/delete-product/:id', (req, res) => {
+    const id = req.params.id
+    let products = JSON.parse(fs.readFileSync('products.json'))
+    const index = products.findIndex(customer => customer.id === id)
+    if (index !== -1) {
+        customer.splice(index, 1)
+        fs.writeFileSync('products.json', JSON.stringify(products))
+        res.json({ message: 'Cliente excluído com sucesso!' })
+    } else {
+        res.status(404).json({ error: 'Cliente não encontrado.' })
+    }
+})
+
+api.get('/customers', (req, res) => {
+    const customers = JSON.parse(fs.readFileSync('customers.json'))
+    res.json(customers)
+})
+
+api.get('/products', (req, res) => {
+    const products = JSON.parse(fs.readFileSync('products.json'))
+    res.json(products)
+})
+
+api.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`)
+})
+

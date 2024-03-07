@@ -12,8 +12,8 @@
 </template>
 
 <script setup>
-import { RouterView } from 'vue-router';
-import SideBar from './components/SideBar.vue';
+import { RouterView } from 'vue-router'
+import SideBar from './components/SideBar.vue'
 
 const options = [
   { name: 'home-outline', option: 'Dashboard', link: '/' },
@@ -21,11 +21,11 @@ const options = [
   { name: 'cube-outline', option: 'Cadastrar novo Produto', link: '/cadastro-produto' },
   { name: 'person-outline', option: 'Meus Clientes', link: '/meus-clientes' },
   { name: 'cube-outline', option: 'Meus Produtos', link: '/meus-produtos' }
-];
+]
 
 const optionsWithLinks = options.map(option => ({
   name: option.name,
   option: option.option,
   link: option.link
-}));
+}))
 </script>
